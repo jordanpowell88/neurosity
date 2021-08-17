@@ -1,11 +1,11 @@
-# 🚀 Notion React Starter
+# 🚀 Neurosity Notion Thoughts App In React
 
 ![App Screenshot](public/notion-react-starter.png)
 
 ### Getting Started
 
-- 1️⃣ `git clone https://github.com/neurosity/notion-react-starter.git`
-- 2️⃣ `cd notion-react-starter`
+- 1️⃣ `git clone https://github.com/jordanpowell88/neurosity.git`
+- 2️⃣ `cd notion`
 - 3️⃣ `npm install`
 - 4️⃣ `npm start`
 
