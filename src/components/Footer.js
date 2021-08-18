@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="card-footer">
       <a
         className="card-link card-footer-cta"
-        href="https://github.com/neurosity/notion-react-starter"
+        href="https://github.com/jordanpowell88/neurosity"
         target="_blank"
         rel="noopener noreferrer"
       >

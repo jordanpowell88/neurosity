@@ -4,16 +4,9 @@ import { Nav } from "../components/Nav";
 import { useNotion, notion } from "../services/notion";
 import { map } from 'rxjs/operators';
 
-export function Predications() {
+function useProbability(predictionType) {
     const { user } = useNotion();
-    const [predictionType, setPredictionType] = useState('leftFoot');
     const [probability, setProbability] = useState(0);
-    
-    useEffect(() => {
-        if (!user) {
-            navigate('/login');
-        }
-    }, [user]);
 
     useEffect(() => {
         if (!user) {
@@ -22,12 +15,21 @@ export function Predications() {
 
         const subscription = notion.predictions(predictionType).pipe(
             map(predictions => predictions.probability),
-        ).subscribe(prob => setProbability(Math.trunc(prob * 100)));
-
+            map(prob => Math.trunc(prob * 100)),
+        ).subscribe(prob => setProbability(prob));
+    
         return () => {
             subscription.unsubscribe();
         }
-    }, [user]);
+    }, [user, predictionType]);
+
+    return probability;
+}
+
+export function Predications() {
+    const { user } = useNotion();
+    const [predictionType, setPredictionType] = useState('leftFoot');
+    const probability = useProbability(predictionType);
 
     return (
         <main className="main-container">
