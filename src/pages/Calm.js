@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 function useCalm() {
   const { user } = useNotion();
-  const [calm, setCalm] = useState(user.calm);
+  const [calm, setCalm] = useState(user?.calm ?? 0);
 
   useEffect(() => {
     if (!user) {

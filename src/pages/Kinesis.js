@@ -36,7 +36,7 @@ export function Kinesis() {
                 &nbsp; {probability}% <div className="calm-word">Probability</div>
             </div>
             
-            <select onChange={setPredictionType}>
+            <select onChange={e => setPredictionType(e.target.value)}>
                 <option value="leftFoot">Left Foot</option>
                 <option value="bitingALemon">Biting A Lemon</option>
             </select>

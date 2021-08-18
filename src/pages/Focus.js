@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 function useFocus() {
     const { user } = useNotion();
-    const [focus, setFocus] = useState(0);
+    const [focus, setFocus] = useState(user?.focus ?? 0);
 
     useEffect(() => {
         if (!user) {
