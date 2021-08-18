@@ -3,7 +3,7 @@ import { Nav } from "../components/Nav";
 import { useNotion, notion } from "../services/notion";
 import { map } from 'rxjs/operators';
 
-function useProbability(predictionType) {
+export function useKinesis(predictionType) {
     const { user } = useNotion();
     const [probability, setProbability] = useState(0);
 
@@ -25,9 +25,9 @@ function useProbability(predictionType) {
     return { user, probability };
 }
 
-export function Predications() {
+export function Kinesis() {
     const [predictionType, setPredictionType] = useState('leftFoot');
-    const { user, probability } = useProbability(predictionType);
+    const { user, probability } = useKinesis(predictionType);
 
     return (
         <main className="main-container">

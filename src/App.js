@@ -7,7 +7,7 @@ import { Loading } from "./components/Loading";
 import { Login } from "./pages/Login";
 import { Logout } from "./pages/Logout";
 import { Calm } from "./pages/Calm";
-import { Predications } from "./pages/Predications";
+import { Kinesis } from "./pages/Kinesis";
 import { Focus } from './pages/Focus';
 
 import { useNotion } from "./services/notion";
@@ -39,7 +39,7 @@ function Routes() {
       <Devices path="/devices" />
       <Login path="/login" />
       <Logout path="/logout" />
-      <Predications path="/predictions" />
+      <Kinesis path="/kinesis" />
       <Focus path="/focus" />
     </Router>
   );

@@ -4,36 +4,36 @@ import { useNotion } from '../services/notion';
 
 export function useShowNavigation() {
     const [showCalm, setShowCalm] = useState(false);
-    const [showPredictions, setShowPredictions] = useState(true);
+    const [showKinesis, setShowKinesis] = useState(true);
     const [showFocus, setShowFocus] = useState(true);
     const location = useLocation();
 
     useEffect(() => {
         if (location.pathname === '/') {
             setShowCalm(false);
-            setShowPredictions(true);
+            setShowKinesis(true);
             setShowFocus(true);
         }
 
-        if (location.pathname === '/predictions') {
-            setShowPredictions(false);
+        if (location.pathname === '/kinesis') {
+            setShowKinesis(false);
             setShowCalm(true);
             setShowFocus(true);
         }
 
         if (location.pathname === '/focus') {
             setShowFocus(false);
-            setShowPredictions(true);
+            setShowKinesis(true);
             setShowCalm(true);
         }
 
     }, [location]);
 
-    return { showCalm, showPredictions, showFocus }; 
+    return { showCalm, showKinesis, showFocus }; 
 }
 
 export function Navigation() {
-    const { showCalm, showPredictions, showFocus } = useShowNavigation();
+    const { showCalm, showKinesis, showFocus } = useShowNavigation();
     const { user } = useNotion();
 
     useEffect(() => {
@@ -50,8 +50,8 @@ export function Navigation() {
         navigate("/");
       }
     
-      function goToPredictions() {
-        navigate('/predictions');
+      function goToKinesis() {
+        navigate('/kinesis');
       }
 
       function goToFocus() {
@@ -62,7 +62,7 @@ export function Navigation() {
         <>
             { showCalm ? <button onClick={goToHome} className="card-btn">Calm</button> : null }
             { showFocus ? <button onClick={goToFocus} className="card-btn">Focus</button> : null }
-            { showPredictions ? <button onClick={goToPredictions} className="card-btn">Predictions</button> : null }
+            { showKinesis ? <button onClick={goToKinesis} className="card-btn">Kinesis</button> : null }
             <button onClick={goToLogout} className="card-btn">Logout</button>
         </>
     )
