@@ -11,6 +11,7 @@ import { Kinesis } from "./pages/Kinesis";
 import { Focus } from './pages/Focus';
 
 import { useNotion } from "./services/notion";
+import { Brainwaves } from "./pages/Brainwaves";
 
 export function App() {
   return (
@@ -41,6 +42,7 @@ function Routes() {
       <Logout path="/logout" />
       <Kinesis path="/kinesis" />
       <Focus path="/focus" />
+      <Brainwaves path="/brainwaves" />
     </Router>
   );
 }

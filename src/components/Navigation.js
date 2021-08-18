@@ -6,6 +6,7 @@ export function useShowNavigation() {
     const [showCalm, setShowCalm] = useState(false);
     const [showKinesis, setShowKinesis] = useState(true);
     const [showFocus, setShowFocus] = useState(true);
+    const [showBrainwaves, setShowBrainwaves] = useState(true);
     const location = useLocation();
 
     useEffect(() => {
@@ -13,27 +14,37 @@ export function useShowNavigation() {
             setShowCalm(false);
             setShowKinesis(true);
             setShowFocus(true);
+            setShowBrainwaves(true);
         }
 
         if (location.pathname === '/kinesis') {
             setShowKinesis(false);
             setShowCalm(true);
             setShowFocus(true);
+            setShowBrainwaves(true);
         }
 
         if (location.pathname === '/focus') {
             setShowFocus(false);
             setShowKinesis(true);
             setShowCalm(true);
+            setShowBrainwaves(true);
+        }
+
+        if (location.pathname === '/brainwaves') {
+            setShowBrainwaves(false);
+            setShowKinesis(true);
+            setShowCalm(true);
+            setShowFocus(true);
         }
 
     }, [location]);
 
-    return { showCalm, showKinesis, showFocus }; 
+    return { showCalm, showKinesis, showFocus, showBrainwaves }; 
 }
 
 export function Navigation() {
-    const { showCalm, showKinesis, showFocus } = useShowNavigation();
+    const { showCalm, showKinesis, showFocus, showBrainwaves } = useShowNavigation();
     const { user } = useNotion();
 
     useEffect(() => {
@@ -44,25 +55,30 @@ export function Navigation() {
 
     function goToLogout() {
         navigate("/logout");
-      }
-    
-      function goToHome() {
-        navigate("/");
-      }
-    
-      function goToKinesis() {
-        navigate('/kinesis');
-      }
+    }
 
-      function goToFocus() {
+    function goToHome() {
+        navigate("/");
+    }
+
+    function goToKinesis() {
+        navigate('/kinesis');
+    }
+
+    function goToFocus() {
         navigate('/focus');
-      }
+    }
+
+    function goToBrainwaves() {
+        navigate('/brainwaves');
+    }
 
     return (
         <>
             { showCalm ? <button onClick={goToHome} className="card-btn">Calm</button> : null }
             { showFocus ? <button onClick={goToFocus} className="card-btn">Focus</button> : null }
             { showKinesis ? <button onClick={goToKinesis} className="card-btn">Kinesis</button> : null }
+            { showBrainwaves ? <button onClick={goToBrainwaves} className="card-btn">Brainwaves</button> : null }
             <button onClick={goToLogout} className="card-btn">Logout</button>
         </>
     )
