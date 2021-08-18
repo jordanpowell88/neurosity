@@ -8,6 +8,7 @@ import { Login } from "./pages/Login";
 import { Logout } from "./pages/Logout";
 import { Calm } from "./pages/Calm";
 import { Predications } from "./pages/Predications";
+import { Focus } from './pages/Focus';
 
 import { useNotion } from "./services/notion";
 
@@ -39,6 +40,7 @@ function Routes() {
       <Login path="/login" />
       <Logout path="/logout" />
       <Predications path="/predictions" />
+      <Focus path="/focus" />
     </Router>
   );
 }

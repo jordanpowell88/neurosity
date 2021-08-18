@@ -1,4 +1,3 @@
-import { navigate } from "@reach/router";
 import React, { useState, useEffect } from "react";
 import { Nav } from "../components/Nav";
 import { useNotion, notion } from "../services/notion";
@@ -23,13 +22,12 @@ function useProbability(predictionType) {
         }
     }, [user, predictionType]);
 
-    return probability;
+    return { user, probability };
 }
 
 export function Predications() {
-    const { user } = useNotion();
     const [predictionType, setPredictionType] = useState('leftFoot');
-    const probability = useProbability(predictionType);
+    const { user, probability } = useProbability(predictionType);
 
     return (
         <main className="main-container">

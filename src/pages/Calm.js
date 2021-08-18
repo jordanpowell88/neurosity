@@ -21,12 +21,11 @@ function useCalm() {
 
   }, [user]);
 
-  return calm;
+  return { user, calm };
 }
 
 export function Calm() {
-  const { user } = useNotion();
-  const calm = useCalm();
+  const { user, calm } = useCalm();
 
   return (
     <main className="main-container">
